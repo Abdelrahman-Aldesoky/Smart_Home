@@ -2,16 +2,16 @@
  * main.c
  *
  *  Created on: Sep 13, 2023
- *      Author: Abdelrahman Mohamed
+ *      Author: Amira Magdy,Abdelrahman Mohamed
  */
 
-#include"STD_TYPES.h"
-#include"BIT_MATH.h"
-#include<util/delay.h>
-
+#include "UTILS/STD_TYPES.h"
+#include "UTILS/BIT_MATH.h"
 #include "MCAL/DIO/DIO_interface.h"
-#include "USART_private.h"
-#include"USART_interface.h"
+#include "../USART/USART_private.h"
+#include "../USART/USART_interface.h"
+#include <util/delay.h>
+
 
 int main()
 {

@@ -4,13 +4,13 @@
 /****************Date:21/08/2023.****************/
 /************************************************/
 
-#include "STD_TYPES.h"
-#include "BIT_MATH.h"
+#include "../../UTILS/STD_TYPES.h"
+#include "../../UTILS/BIT_MATH.h"
 #include <util/delay.h>
 #include "CLCD_private.h"
 #include "CLCD_config.h"
 #include "CLCD_interface.h"
-#include "MCAL/DIO/DIO_interface.h"
+#include "../../MCAL/DIO/DIO_interface.h"
 
 void CLCD_voidInit (void)			//LCD Initialize function
 {

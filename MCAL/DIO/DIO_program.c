@@ -4,11 +4,11 @@
 /****************Date:16/08/2023.****************/
 /************************************************/
 
-#include "STD_TYPES.h"
-#include "BIT_MATH.h"
-#include "MCAL/DIO/DIO_config.h"
-#include "MCAL/DIO/DIO_interface.h"
-#include "MCAL/DIO/DIO_private.h"
+#include "../../UTILS/STD_TYPES.h"
+#include "../../UTILS/BIT_MATH.h"
+#include "DIO_config.h"
+#include "DIO_interface.h"
+#include "DIO_private.h"
 
 void DIO_voidSetPortDirection(u8 Copy_u8Port,u8 Copy_u8Direction)
 {

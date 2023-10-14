@@ -4,8 +4,8 @@
 /****************Date:13/09/2023.****************/
 /************************************************/
 
-#include "STD_TYPES.h"
-#include "BIT_MATH.h"
+#include "../../UTILS/STD_TYPES.h"
+#include "../../UTILS/BIT_MATH.h"
 #include "USART_private.h"
 #include "USART_config.h"
 #include "USART_interface.h"

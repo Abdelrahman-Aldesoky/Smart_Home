@@ -4,8 +4,8 @@
 /****************Date:19/09/2023.****************/
 /************************************************/
 
-#include "STD_TYPES.h"
-#include "BIT_MATH.h"
+#include "../../UTILS/STD_TYPES.h"
+#include "../../UTILS/BIT_MATH.h"
 #include "I2C_private.h"
 #include "I2C_config.h"
 #include "I2C_interface.h"

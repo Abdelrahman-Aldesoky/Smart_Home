@@ -4,8 +4,8 @@
 /****************Date:06/09/2023.****************/
 /************************************************/
 
-#include "STD_TYPES.h"
-#include "BIT_MATH.h"
+#include "../../UTILS/STD_TYPES.h"
+#include "../../UTILS/BIT_MATH.h"
 #include "TIMER0_private.h"
 #include "TIMER0_config.h"
 #include "TIMER0_interface.h"
