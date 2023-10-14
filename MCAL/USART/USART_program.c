@@ -6,12 +6,15 @@
 
 #include "../../UTILS/STD_TYPES.h"
 #include "../../UTILS/BIT_MATH.h"
+#include "../DIO/DIO_interface.h"
 #include "USART_private.h"
 #include "USART_config.h"
 #include "USART_interface.h"
 
 void USART_voidInit(void)
 {
+	DIO_voidSetPinDirection(PORTD_REG, PIN0, PIN_DIRECTION_INPUT);
+	DIO_voidSetPinDirection(PORTD_REG, PIN1, PIN_DIRECTION_OUTPUT);
 	// Set BaudRate -> 9600/8MhZ
 	UBRRL = 51;
 	UBRRH = 0;

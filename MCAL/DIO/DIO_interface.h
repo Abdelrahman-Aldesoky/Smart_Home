@@ -4,15 +4,14 @@
 /****************Date:16/08/2023.****************/
 /************************************************/
 
+#ifndef _DIO_DIO_INTERFACE_H_
+#define _DIO_DIO_INTERFACE_H_
 
-#ifndef MCAL_DIO_DIO_INTERFACE_H_
-#define MCAL_DIO_DIO_INTERFACE_H_
-
-void DIO_voidSetPortDirection(u8 Copy_u8Port,u8 Copy_u8Direction);
-void DIO_voidSetPinDirection(u8 Copy_u8Port,u8 Copy_u8PinNo,u8 Copy_u8Direction);
-void DIO_voidSetPortValue(u8 Copy_u8Port,u8 Copy_u8Value);
-void DIO_voidSetPinValue(u8 Copy_u8Port,u8 Copy_u8PinNo,u8 Copy_u8PinValue);
-u8 DIO_u8GetPinValue(u8 Copy_u8Port,u8 Copy_u8PinNo);
+void DIO_voidSetPortDirection(u8 Copy_u8Port, u8 Copy_u8Direction);
+void DIO_voidSetPinDirection(u8 Copy_u8Port, u8 Copy_u8PinNo, u8 Copy_u8Direction);
+void DIO_voidSetPortValue(u8 Copy_u8Port, u8 Copy_u8Value);
+void DIO_voidSetPinValue(u8 Copy_u8Port, u8 Copy_u8PinNo, u8 Copy_u8PinValue);
+u8 DIO_u8GetPinValue(u8 Copy_u8Port, u8 Copy_u8PinNo);
 
 #define PORT_DIRECTION_OUTPUT 0XFF
 #define PORT_DIRECTION_INPUT 0X00

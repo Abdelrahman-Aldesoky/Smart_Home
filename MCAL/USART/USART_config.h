@@ -4,7 +4,7 @@
 /****************Date:13/09/2023.****************/
 /************************************************/
 
-#ifndef USART_CONFIG_H_
-#define USART_CONFIG_H_
+#ifndef _USART_CONFIG_H_
+#define _USART_CONFIG_H_
 
 #endif

@@ -4,7 +4,7 @@
 /****************Date:19/09/2023.****************/
 /************************************************/
 
-#ifndef I2C_CONFIG_H_
-#define I2C_CONFIG_H_
+#ifndef _I2C_CONFIG_H_
+#define _I2C_CONFIG_H_
 
 #endif

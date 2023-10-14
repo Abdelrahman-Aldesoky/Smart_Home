@@ -4,7 +4,7 @@
 /****************Date:21/08/2023.****************/
 /************************************************/
 
-#ifndef CLCD_PRIVATE_H_
-#define CLCD_PRIVATE_H_
+#ifndef _CLCD_PRIVATE_H_
+#define _CLCD_PRIVATE_H_
 
 #endif

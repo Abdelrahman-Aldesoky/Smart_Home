@@ -12,190 +12,211 @@
 
 void I2C_voidMasterInit(u8 Copy_u8Address)
 {
-	if(Copy_u8Address==0)
+	if (Copy_u8Address == 0)
 	{
-		asm("NOP");											/*Do Nothing*/
+		/*Do Nothing*/
+		asm("NOP");
 	}
 	else
 	{
-		TWAR=Copy_u8Address<<1;								/*Copy Master Address in TWAR register*/
+		/*Copy Master Address in TWAR register*/
+		TWAR = Copy_u8Address << 1;
 	}
 
 	/*set speed for 400KHZ*/
-	CLR_BIT(TWSR,TWSR_TWPS0);
-	CLR_BIT(TWSR,TWSR_TWPS1);
-	TWBR=2;
+	CLR_BIT(TWSR, TWSR_TWPS0);
+	CLR_BIT(TWSR, TWSR_TWPS1);
+	TWBR = 2;
 }
 
 void I2C_voidSlaveInit(u8 Copy_u8Address)
 {
-	TWAR=Copy_u8Address<<1;									/*Copy Slave Address in TWAR register*/
+	/*Copy Slave Address in TWAR register*/
+	TWAR = Copy_u8Address << 1;
 }
 
 I2C_state I2C_SendStartCondition(void)
 {
-	u8 LocaL_u8Error=no_err;
-
-	TWCR = (1<<TWCR_TWINT)|(1<<TWCR_TWSTA)|(1<<TWCR_TWEN);	/*Send Start Condition*/
-	while(!(TWCR&(1<<TWCR_TWINT)));							/* Wait until TWI finish its current job */
-
-	if((TWSR&0b11111000)==START_ACK)						/*Error Handling*/
+	u8 LocaL_u8Error = no_err;
+	/*Send Start Condition*/
+	TWCR = (1 << TWCR_TWINT) | (1 << TWCR_TWSTA) | (1 << TWCR_TWEN);
+	/* Wait until TWI finish its current job */
+	while (!(TWCR & (1 << TWCR_TWINT)))
+		;
+	/*Error Handling*/
+	if ((TWSR & 0b11111000) == START_ACK)
 	{
-
 	}
 	else
 	{
-		LocaL_u8Error=start_err;
+		LocaL_u8Error = start_err;
 	}
-
-	return LocaL_u8Error;									/*Return Error Status*/
+	/*Return Error Status*/
+	return LocaL_u8Error;
 }
 
 I2C_state I2C_SendRepeatedStart(void)
 {
-	u8 LocaL_u8Error=no_err;
-
-	TWCR = (1<<TWCR_TWINT)|(1<<TWCR_TWSTA)|(1<<TWCR_TWEN);	/*Send Repeated Start Condition*/
-	while(!(TWCR&(1<<TWCR_TWINT)));							/* Wait until TWI finish its current job */
-
-	if((TWSR&0b11111000)==REP_START_ACK)					/*Error Handling*/
+	u8 LocaL_u8Error = no_err;
+	/*Send Repeated Start Condition*/
+	TWCR = (1 << TWCR_TWINT) | (1 << TWCR_TWSTA) | (1 << TWCR_TWEN);
+	/* Wait until TWI finish its current job */
+	while (!(TWCR & (1 << TWCR_TWINT)))
+		;
+	/*Error Handling*/
+	if ((TWSR & 0b11111000) == REP_START_ACK)
 	{
-
 	}
 	else
 	{
-		LocaL_u8Error=start_err;
+		LocaL_u8Error = start_err;
 	}
-
-	return LocaL_u8Error;									/*Return Error Status*/
+	/*Return Error Status*/
+	return LocaL_u8Error;
 }
 
 I2C_state I2C_SendSlaveAddressWithWrite(u8 Copy_u8Address)
 {
-	u8 LocaL_u8Error=no_err;
+	u8 LocaL_u8Error = no_err;
 	/*for 24c02 Address will always be 0b10100000*/
-	TWDR=Copy_u8Address;									/* Copy SlaveAddress in TWI data register */
-	CLR_BIT(TWDR,0);										/* Clear bit 0 in TWDR to Write*/
-
-	TWCR=(1<<TWCR_TWEN)|(1<<TWCR_TWINT)|(1<<TWCR_TWEA); 	/* Enable TWI, generation of ack */
-	while(!(TWCR&(1<<TWCR_TWINT)));							/* Wait until TWI finish its current job */
-
-	if((TWSR&0b11111000)==SLAVE_ADD_AND_WR_ACK)				/*Error Handling*/
+	TWDR = Copy_u8Address; /* Copy SlaveAddress in TWI data register */
+	CLR_BIT(TWDR, 0);	   /* Clear bit 0 in TWDR to Write*/
+	/* Enable TWI, generation of ack */
+	TWCR = (1 << TWCR_TWEN) | (1 << TWCR_TWINT) | (1 << TWCR_TWEA);
+	/* Wait until TWI finish its current job */
+	while (!(TWCR & (1 << TWCR_TWINT)))
+		;
+	/*Error Handling*/
+	if ((TWSR & 0b11111000) == SLAVE_ADD_AND_WR_ACK)
 	{
-
 	}
 	else
 	{
-		LocaL_u8Error=slave_add_wr_err;
+		LocaL_u8Error = slave_add_wr_err;
 	}
-
-	return LocaL_u8Error;									/*Return Error Status*/
+	/*Return Error Status*/
+	return LocaL_u8Error;
 }
 
 I2C_state I2C_SendSlaveAddressWithRead(u8 Copy_u8Address)
 {
-	u8 LocaL_u8Error=no_err;
+	u8 LocaL_u8Error = no_err;
 	/*for 24c02 Address will always be 0b10100001*/
-	TWDR=Copy_u8Address;									/* Copy SlaveAddress in TWI data register */
-	SET_BIT(TWDR,0);										/* Set bit 0 in TWDR to Read*/
-
-	TWCR=(1<<TWCR_TWEN)|(1<<TWCR_TWINT)|(1<<TWCR_TWEA); 	/* Enable TWI, generation of ack */
-	while(!(TWCR&(1<<TWCR_TWINT)));							/* Wait until TWI finish its current job */
-
-	if((TWSR&0b11111000)==SLAVE_ADD_AND_RD_ACK)				/*Error Handling*/
+	TWDR = Copy_u8Address; /* Copy SlaveAddress in TWI data register */
+	SET_BIT(TWDR, 0);	   /* Set bit 0 in TWDR to Read*/
+	/* Enable TWI, generation of ack */
+	TWCR = (1 << TWCR_TWEN) | (1 << TWCR_TWINT) | (1 << TWCR_TWEA);
+	/* Wait until TWI finish its current job */
+	while (!(TWCR & (1 << TWCR_TWINT)))
+		;
+	/*Error Handling*/
+	if ((TWSR & 0b11111000) == SLAVE_ADD_AND_RD_ACK)
 	{
-
 	}
 	else
 	{
-		LocaL_u8Error=slave_add_rd_err;
+		LocaL_u8Error = slave_add_rd_err;
 	}
-
-	return LocaL_u8Error;									/*Return Error Status*/
+	/*Return Error Status*/
+	return LocaL_u8Error;
 }
 
-I2C_state I2C_MasterWriteDataByteAck(u8 Copy_u8Data)		/*Master Write with ACK*/
+/*Master Write with ACK*/
+I2C_state I2C_MasterWriteDataByteAck(u8 Copy_u8Data)
 {
-	u8 LocaL_u8Error=no_err;
-
-	TWDR=Copy_u8Data;										/* Copy data in TWI data register */
-
-	TWCR=(1<<TWCR_TWEN)|(1<<TWCR_TWINT)|(1<<TWCR_TWEA); 	/* Enable TWI, generation of ACK */
-	while(!(TWCR&(1<<TWCR_TWINT)));							/* Wait until TWI finish its current job */
-
-	if((TWSR&0b11111000)==MSTR_WR_BYTE_ACK)					/*Error Handling*/
+	u8 LocaL_u8Error = no_err;
+	/* Copy data in TWI data register */
+	TWDR = Copy_u8Data;
+	/* Enable TWI, generation of ACK */
+	TWCR = (1 << TWCR_TWEN) | (1 << TWCR_TWINT) | (1 << TWCR_TWEA);
+	/* Wait until TWI finish its current job */
+	while (!(TWCR & (1 << TWCR_TWINT)))
+		;
+	/*Error Handling*/
+	if ((TWSR & 0b11111000) == MSTR_WR_BYTE_ACK)
 	{
-
 	}
 	else
 	{
-		LocaL_u8Error=mstr_wr_data_err;
+		LocaL_u8Error = mstr_wr_data_err;
 	}
-
-	return LocaL_u8Error;									/*Return Error Status*/
+	/*Return Error Status*/
+	return LocaL_u8Error;
 }
 
-I2C_state I2C_MasterWriteDataByteNack(u8 Copy_u8Data)		/*Master Write with NACK*/
+/*Master Write with NACK*/
+I2C_state I2C_MasterWriteDataByteNack(u8 Copy_u8Data)
 {
-	u8 LocaL_u8Error=no_err;
-
-	TWDR=Copy_u8Data;										/* Copy data in TWI data register */
-
-	TWCR=(1<<TWCR_TWEN)|(1<<TWCR_TWINT); 					/* Enable TWI, no ACK */
-	while(!(TWCR&(1<<TWCR_TWINT)));							/* Wait until TWI finish its current job */
-
-	if((TWSR&0b11111000)==MSTR_WR_BYTE_NOT_ACK)				/*Error Handling*/
+	u8 LocaL_u8Error = no_err;
+	/* Copy data in TWI data register */
+	TWDR = Copy_u8Data;
+	/* Enable TWI, no ACK */
+	TWCR = (1 << TWCR_TWEN) | (1 << TWCR_TWINT);
+	/* Wait until TWI finish its current job */
+	while (!(TWCR & (1 << TWCR_TWINT)))
+		;
+	/*Error Handling*/
+	if ((TWSR & 0b11111000) == MSTR_WR_BYTE_NOT_ACK)
 	{
-
 	}
 	else
 	{
-		LocaL_u8Error=mstr_wr_data_err;
+		LocaL_u8Error = mstr_wr_data_err;
 	}
-
-	return LocaL_u8Error;									/*Return Error Status*/
+	/*Return Error Status*/
+	return LocaL_u8Error;
 }
 
-I2C_state I2C_MasterReadDataByteAck(u8 *Copy_u8pData)		/*Master Read with ACK*/
+/*Master Read with ACK*/
+I2C_state I2C_MasterReadDataByteAck(u8 *Copy_u8pData)
 {
-	u8 LocaL_u8Error=no_err;
+	u8 LocaL_u8Error = no_err;
 
-	TWCR=(1<<TWCR_TWEN)|(1<<TWCR_TWINT)|(1<<TWCR_TWEA); 	/* Enable TWI, generation of ACK */
-	while(!(TWCR&(1<<TWCR_TWINT)));							/* Wait until TWI finish its current job */
+	/* Enable TWI, generation of ACK */
+	TWCR = (1 << TWCR_TWEN) | (1 << TWCR_TWINT) | (1 << TWCR_TWEA);
+	/* Wait until TWI finish its current job */
+	while (!(TWCR & (1 << TWCR_TWINT)))
+		;
 
-	if((TWSR&0b11111000)==MSTR_RD_BYTE_WITH_ACK)			/*Error Handling*/
+	/*Error Handling*/
+	if ((TWSR & 0b11111000) == MSTR_RD_BYTE_WITH_ACK)
 	{
-
 	}
 	else
 	{
-		LocaL_u8Error=mstr_rd_data_err;
+		LocaL_u8Error = mstr_rd_data_err;
 	}
-
-	*Copy_u8pData=TWDR;										/* Return received data */
-	return LocaL_u8Error;									/*Return Error Status*/
+	/* Return received data */
+	*Copy_u8pData = TWDR;
+	/*Return Error Status*/
+	return LocaL_u8Error;
 }
 
-I2C_state I2C_MasterReadDataByteNack(u8 *Copy_u8pData)		/*Master Read with NACK*/
+/*Master Read with NACK*/
+I2C_state I2C_MasterReadDataByteNack(u8 *Copy_u8pData)
 {
-	u8 LocaL_u8Error=no_err;
-	TWCR=(1<<TWCR_TWEN)|(1<<TWCR_TWINT); 					/* Enable TWI, no ACK */
-	while(!(TWCR&(1<<TWCR_TWINT)));							/* Wait until TWI finish its current job */
-
-	if((TWSR&0b11111000)==MSTR_RD_BYTE_WITH_NOT_ACK)		/*Error Handling*/
+	u8 LocaL_u8Error = no_err;
+	/* Enable TWI, no ACK */
+	TWCR = (1 << TWCR_TWEN) | (1 << TWCR_TWINT);
+	/* Wait until TWI finish its current job */
+	while (!(TWCR & (1 << TWCR_TWINT)))
+		;
+	/*Error Handling*/
+	if ((TWSR & 0b11111000) == MSTR_RD_BYTE_WITH_NOT_ACK)
 	{
-
 	}
 	else
 	{
-		LocaL_u8Error=mstr_rd_data_err;
+		LocaL_u8Error = mstr_rd_data_err;
 	}
-
-	*Copy_u8pData=TWDR;					   				 	/* Return received data */
-	return LocaL_u8Error;									/*Return Error Status*/
+	/* Return received data */
+	*Copy_u8pData = TWDR;
+	/*Return Error Status*/
+	return LocaL_u8Error;
 }
 
 void I2C_voidSendStopCondition(void)
 {
-	TWCR = (1<<TWCR_TWINT)|(1<<TWCR_TWEN)|(1<<TWCR_TWSTO);  /*Send Stop Condition*/
+	/*Send Stop Condition*/
+	TWCR = (1 << TWCR_TWINT) | (1 << TWCR_TWEN) | (1 << TWCR_TWSTO);
 }

@@ -4,8 +4,8 @@
 /****************Date:21/08/2023.****************/
 /************************************************/
 
-#ifndef CLCD_CONFIG_H_
-#define CLCD_CONFIG_H_
+#ifndef _CLCD_CONFIG_H_
+#define _CLCD_CONFIG_H_
 
 /*CLCD CTRL and data
  * PORT OPTIONS:
@@ -17,7 +17,7 @@
 #define CLCD_DATA_PORT PORTD_REG
 #define CLCD_CTRL_PORT PORTB_REG
 
-/*CLCD CTRL 
+/*CLCD CTRL
  * PIN OPTIONS:
  * 1-PIN0
  * 2-PIN1
@@ -32,7 +32,7 @@
 #define RW PIN1
 #define EN PIN2
 
-//START OF 8 BIT MODE
+// START OF 8 BIT MODE
 /*
  * FUNCTION_SET OPTIONS:
  * *****8 bit mode******
@@ -64,6 +64,6 @@
  * 4-0b00000111 moving cursor moving display
  */
 #define ENTRY_MODE_SET 0b00000110
-//END OF 8 BIT MODE
+// END OF 8 BIT MODE
 
 #endif

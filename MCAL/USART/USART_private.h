@@ -4,8 +4,8 @@
 /****************Date:13/09/2023.****************/
 /************************************************/
 
-#ifndef USART_PRIVATE_H_
-#define USART_PRIVATE_H_
+#ifndef _USART_PRIVATE_H_
+#define _USART_PRIVATE_H_
 
 #define UDR              *((volatile u8*)0X2C)
 /*************************************************************************/

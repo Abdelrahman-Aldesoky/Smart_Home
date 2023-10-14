@@ -12,24 +12,19 @@
 #include "../USART/USART_interface.h"
 #include <util/delay.h>
 
-
 int main()
 {
-	DIO_voidSetPinDirection(PORTD_REG, PIN0, PIN_DIRECTION_INPUT);
-	DIO_voidSetPinDirection(PORTD_REG, PIN1, PIN_DIRECTION_OUTPUT);
 	DIO_voidSetPortDirection(PORTB_REG, PORT_DIRECTION_OUTPUT);
 
-	//DIO_voidSetPortValue(PORTB_REG, PORT_VALUE_HIGH);
-
 	USART_voidInit();
-	u8 number=0;
+	u8 number = 0;
 
-	while(1)
+	while (1)
 	{
-			_delay_ms(100);
-		/***************************************************************************************/
-		number=USART_voidReceive();
-		switch(number)
+		_delay_ms(100);
+
+		number = USART_voidReceive();
+		switch (number)
 		{
 		case '0':
 			DIO_voidSetPinValue(PORTB_REG, PIN0, PIN_VALUE_HIGH);

@@ -4,8 +4,8 @@
 /****************Date:06/09/2023.****************/
 /************************************************/
 
-#ifndef TIMER0_PRIVATE_H_
-#define TIMER0_PRIVATE_H_
+#ifndef _TIMER0_PRIVATE_H_
+#define _TIMER0_PRIVATE_H_
 
 #define TCNT0           	*((volatile u8*)0X52)   /*Number of ticks stored here*/
 #define TCCR0           	*((volatile u8*)0X53)   /*Timer counter control register*/
