@@ -36,7 +36,6 @@ int main()
 	u8 password_1[100] = { 0 };
 	u8 password_2[100] = { 0 };
 
-
 	u8 message_1[] = { "For Light on and off Press 0" };
 	PrintTerminal(message_1,ENTER,DOT);
 	u8 message_2[] = { "For user name Press 1" };
@@ -70,6 +69,7 @@ int main()
 		{
 			GettingUserInputAndCheck(user_name,USERNAME);
 			u8 error=NOK;
+			u8 count=0;
 			do
 			{
 				GettingUserInputAndCheck(password_1,PASSWORD);
@@ -79,11 +79,20 @@ int main()
 				{
 					u8 passwords_dont_match[]="Passwords don't match, Please try again";
 					PrintTerminal(passwords_dont_match, ENTER, DOT);
+					count++;
 				}
 
-			}while(error);
+			}while(error && (count<3));
+			if(count > 2)
+			{
+				u8 enter[]="No more tries!!!";
+				PrintTerminal(enter, ENTER, NO_DOT);
+			}
+			else
+			{
 			u8 passwords_match[]="Passwords match Thank you!";
 			PrintTerminal(passwords_match, ENTER, NO_DOT);
+			}
 			break;
 		}
 		default:
@@ -145,13 +154,11 @@ void GettingUserInputAndCheck(u8 data[],u8 Selector)
 			USART_voidSend(input);
 			user_input[index] = input;
 			index++;
-			continue;
 		}
 		else if (input == 0X08 && index != 0)
 		{
 			USART_voidSend(input);
 			index--;
-			continue;
 		}
 	}
 	user_input[index] = '\0';
