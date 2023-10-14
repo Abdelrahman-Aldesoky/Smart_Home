@@ -6,11 +6,11 @@
 
 #include "../../UTILS/STD_TYPES.h"
 #include "../../UTILS/BIT_MATH.h"
-#include <util/delay.h>
 #include "../../MCAL/I2C/I2C_interface.h"
 #include "EEPROM_private.h"
 #include "EEPROM_config.h"
 #include "EEPROM_interface.h"
+#include <util/delay.h>
 
 void EEPROM_voidInit(void)
 {

@@ -4,8 +4,8 @@
 /****************Date:16/08/2023.****************/
 /************************************************/
 
-#ifndef _DIO_DIO_PRIVATE_H_
-#define _DIO_DIO_PRIVATE_H_
+#ifndef _DIO_PRIVATE_H_
+#define _DIO_PRIVATE_H_
 
 #define PORTA *((volatile u8 *)0X3B)
 #define DDRA *((volatile u8 *)0X3A)

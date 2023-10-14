@@ -4,8 +4,8 @@
 /****************Date:16/08/2023.****************/
 /************************************************/
 
-#ifndef _DIO_DIO_INTERFACE_H_
-#define _DIO_DIO_INTERFACE_H_
+#ifndef _DIO_INTERFACE_H_
+#define _DIO_INTERFACE_H_
 
 void DIO_voidSetPortDirection(u8 Copy_u8Port, u8 Copy_u8Direction);
 void DIO_voidSetPinDirection(u8 Copy_u8Port, u8 Copy_u8PinNo, u8 Copy_u8Direction);

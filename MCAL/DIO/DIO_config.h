@@ -4,7 +4,7 @@
 /****************Date:16/08/2023.****************/
 /************************************************/
 
-#ifndef _DIO_DIO_CONFIG_H_
-#define _DIO_DIO_CONFIG_H_
+#ifndef _DIO_CONFIG_H_
+#define _DIO_CONFIG_H_
 
 #endif

@@ -6,9 +6,10 @@
 
 #include "../../UTILS/STD_TYPES.h"
 #include "../../UTILS/BIT_MATH.h"
+#include "DIO_private.h"
 #include "DIO_config.h"
 #include "DIO_interface.h"
-#include "DIO_private.h"
+
 
 void DIO_voidSetPortDirection(u8 Copy_u8Port, u8 Copy_u8Direction)
 {
