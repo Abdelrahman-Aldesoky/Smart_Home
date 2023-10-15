@@ -4,6 +4,7 @@ gitignored/
 #Eclipse Folders 
 /Release
 /Debug/
+
 #make files
 *.mk
 *.d
