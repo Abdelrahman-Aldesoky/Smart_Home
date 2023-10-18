@@ -10,10 +10,10 @@
 void EEPROM_voidInit(void);
 void EEPROM_voidClear(void);
 
-void EEPROM_voidWriteData(u8 Copy_u8Address, u8 Copy_u8Data);
-u8 EEPROM_voidReadData(u8 Copy_u8Address);
+void EEPROM_voidWriteData(u16 Copy_u16Address, u8 Copy_u8Data);
+u8 EEPROM_voidReadData(u16 Copy_u16Address);
 
-void EEPROM_voidSeQWrite(u8 Copy_u8Address, u8 *Copy_u8DataArr, u8 Copy_u8DataArrLength);
-void EEPROM_voidSeqRead(u8 Copy_u8Address, u8 *Copy_u8DataArr, u8 Copy_u8DataArrLength);
+void EEPROM_voidSeqWrite(u16 Copy_u16Address, u8 *Copy_u8DataArr, u8 Copy_u8DataArrLength);
+void EEPROM_voidSeqRead(u16 Copy_u16Address, u8 *Copy_u8DataArr, u8 Copy_u8DataArrLength);
 
 #endif

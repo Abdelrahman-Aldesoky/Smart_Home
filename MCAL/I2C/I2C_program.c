@@ -79,8 +79,8 @@ I2C_state I2C_SendSlaveAddressWithWrite(u8 Copy_u8Address)
 {
 	u8 LocaL_u8Error = no_err;
 	/*for 24c02 Address will always be 0b10100000*/
-	TWDR = Copy_u8Address; /* Copy SlaveAddress in TWI data register */
-	CLR_BIT(TWDR, 0);	   /* Clear bit 0 in TWDR to Write*/
+	u8 SlaveAddressWithWrite = CLR_BIT(Copy_u8Address, 0);
+	TWDR = SlaveAddressWithWrite; /* Copy SlaveAddress in TWI data register*/
 	/* Enable TWI, generation of ack */
 	TWCR = (1 << TWCR_TWEN) | (1 << TWCR_TWINT) | (1 << TWCR_TWEA);
 	/* Wait until TWI finish its current job */
@@ -102,8 +102,8 @@ I2C_state I2C_SendSlaveAddressWithRead(u8 Copy_u8Address)
 {
 	u8 LocaL_u8Error = no_err;
 	/*for 24c02 Address will always be 0b10100001*/
-	TWDR = Copy_u8Address; /* Copy SlaveAddress in TWI data register */
-	SET_BIT(TWDR, 0);	   /* Set bit 0 in TWDR to Read*/
+	u8 SlaveAddressWithRead = SET_BIT(Copy_u8Address, 0);
+	TWDR = SlaveAddressWithRead; /* Copy SlaveAddress in TWI data register */
 	/* Enable TWI, generation of ack */
 	TWCR = (1 << TWCR_TWEN) | (1 << TWCR_TWINT) | (1 << TWCR_TWEA);
 	/* Wait until TWI finish its current job */
