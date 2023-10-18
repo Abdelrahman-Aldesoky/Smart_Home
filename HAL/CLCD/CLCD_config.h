@@ -14,7 +14,7 @@
  * 3-PORTC_REG
  * 4-PORTD_REG
  */
-#define CLCD_DATA_PORT PORTD_REG
+#define CLCD_DATA_PORT PORTA_REG
 #define CLCD_CTRL_PORT PORTB_REG
 
 /*CLCD CTRL
@@ -28,9 +28,9 @@
  * 7-PIN6
  * 8-PIN7
  */
-#define RS PIN0
-#define RW PIN1
-#define EN PIN2
+#define RS PIN5
+#define RW PIN6
+#define EN PIN7
 
 // START OF 8 BIT MODE
 /*
