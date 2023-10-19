@@ -112,7 +112,13 @@ int main()
 			s8 Repeated = FALSE;
 			GettingUserInputAndCheck(user_name_arr, USERNAME, &username_length);
 			Repeated = CheckRepeatedUsername(user_name_arr,username_length);
-
+			if(Repeated==2)
+			{
+				CLCD_voidSendCommand(DISPLAY_CLEAR);
+				CLCD_voidSendString("30 users max");
+				_delay_ms(1000);
+				break;
+			}
 			if (Repeated)
 			{
 				CLCD_voidSendCommand(DISPLAY_CLEAR);
@@ -253,13 +259,14 @@ s8 CheckRepeatedUsername(u8 data[],u8 arr_length)
 	if(EEPROM_voidReadData(ACCOUNTS_COUNT_ADDRESS))
 	{
 		Accounts_Count=EEPROM_voidReadData(ACCOUNTS_COUNT_ADDRESS);
+		if(Accounts_Count>=30)
+		{
+			return 2;
+		}
 		for(u8 i=0;i<Accounts_Count;i++)
 		{
 			EEPROM_voidSeqRead(Address, username_data, ARR_LENGTH-2);
 			username_data[ARR_LENGTH-2]='\0';
-			CLCD_voidSendCommand(DISPLAY_CLEAR);
-			CLCD_voidSendString(username_data);
-			_delay_ms(200);
 			Repeated=!(strcmp((char*)data,(char*)username_data));
 			if(Repeated)
 			{
