@@ -20,7 +20,7 @@ void DeleteAccount(void);
 void SaveNewAccount(u8 Copy_u8UserNameArr[], u8 Copy_u8UserNameArrLength, u8 Copy_u8PasswordArr[], u8 Copy_u8PasswordLength);
 u8 Login(void);
 s8 CheckPassword(u8 Copy_u8PasswordArr[], u8 Copy_u8PasswordLength);
-void ChangePassword(void);
+u8 ChangePassword(void);
 void Reset(void);
 void Display(u8 Copy_u8Selector, u16 Copy_u16Time, u8 Copy_u8TriesCount);
 void Alarm(void);

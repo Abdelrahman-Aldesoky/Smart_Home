@@ -118,7 +118,7 @@ void Login_Menu(void)
 			break;
 		case 'p':
 			CLEAR_NEWLINE_CHAR;
-			ChangePassword();
+			if(!ChangePassword()) return;
 			break;
 		case 'd':
 		{
@@ -425,8 +425,9 @@ s8 CheckPassword(u8 Copy_u8PasswordArr[], u8 Copy_u8PasswordLength)
 	return Local_s8CorrectPassword;
 }
 
-void ChangePassword(void)
+u8 ChangePassword(void)
 {
+	u8 Local_PasswordChanged = FALSE;
 	s8 Local_s8CorrectOldPassword = FALSE;
 	u8 Local_u8NotaMatch = TRUE;
 
@@ -470,7 +471,8 @@ void ChangePassword(void)
 						EEPROM_voidSeqWrite(Local_u16PasswordAddress, Local_u8ConfirmPasswordArr, Local_u8ConfirmPasswordLength);
 						EEPROM_voidWriteData(CONFIRM_PASSWORD_LENGTH_ADDRESS, Local_u8ConfirmPasswordLength);
 						Display(PASSWORD_CHANGED, TWO_SEC, ZERO);
-						return;
+						Local_PasswordChanged = TRUE;
+						return Local_PasswordChanged;
 					}
 				}
 
@@ -486,8 +488,8 @@ void ChangePassword(void)
 	}
 
 	Display(ERR_PASSWORD, TWO_SEC, ZERO);
-
-	return ;
+	Local_PasswordChanged = FALSE;
+	return Local_PasswordChanged;
 }
 
 void Display(u8 Copy_u8Selector, u16 Copy_u16Time, u8 Copy_u8TriesCount)
@@ -621,7 +623,7 @@ void Alarm(void)
 	DIO_voidSetPinDirection(PORTD_REG, PIN7, PIN_DIRECTION_OUTPUT);
 
 	DIO_voidSetPinValue(PORTD_REG, PIN7, PIN_VALUE_HIGH);
-	Display(ALARM_ON, TWO_SEC, ZERO);
+	Display(ALARM_ON, FIVE_SEC, ZERO);
 	DIO_voidSetPinValue(PORTD_REG, PIN7, PIN_VALUE_LOW);
 }
 
