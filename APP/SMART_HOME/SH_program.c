@@ -97,15 +97,15 @@ void Login_Menu(void)
 		{
 		case 'l':
 			CLEAR_NEWLINE_CHAR;
+			Door_Lock();
 			/*Lock door function*/
 			Display(DOOR_LOCKED,ONE_SEC,ZERO);
-			Door_Lock();
 			break;
 		case 'u':
 			CLEAR_NEWLINE_CHAR;
+			Door_Unlock();
 			/*unlock door function*/
 			Display(DOOR_UNLOCKED,ONE_SEC,ZERO);
-			Door_Unlock();
 			break;
 		case 'o':
 			CLEAR_NEWLINE_CHAR;

@@ -12,7 +12,7 @@
 
 #define ICR_VALUE 20000
 
-#define START_POINT 450
-#define END_POINT 2500
+#define START_POINT 600
+#define END_POINT 2400
 
 #endif /* APP_DOOR_DOOR_CONFIG_H_ */
