@@ -1,6 +1,6 @@
-/******************USART Program*******************/
-/**********Author: Abdelrahman Mohamed.**********/
-/********************Ver.: 01********************/
+/*****************USART_PROGRAM******************/
+/********Authors: Amira Magdy,Abdelrahman********/
+/******************Ver.: 0.0.1.******************/
 /****************Date:13/09/2023.****************/
 /************************************************/
 
@@ -33,17 +33,17 @@ void USART_voidInit(void)
 
 void USART_voidSend(u8 Copy_u8Data)
 {
-	// Wait until transmission Register Empty
+	//Wait until transmission Register Empty
 	while((GET_BIT(UCSRA,UCSRA_UDRE))==0X00);
 
-	//  while((UCSRA&0x20) == 0x00);
+	//while((UCSRA&0x20) == 0x00);
 	UDR = Copy_u8Data;
 }
 
 u8 USART_voidReceive(void)
 {
 	u8 ReceivedData=0;
-	// Wait until Reception Complete
+	//Wait until Reception Complete
 	while((GET_BIT(UCSRA,UCSRA_RXC))==0);
 	//while((UCSRA&0x80) == 0x00);
 	ReceivedData = UDR;

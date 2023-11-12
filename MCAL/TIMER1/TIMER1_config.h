@@ -1,9 +1,11 @@
-/*****************USART_CONFIG*******************/
+/****************TIMER1_CONFIG*******************/
 /********Authors: Amira Magdy,Abdelrahman********/
 /******************Ver.: 0.0.1.******************/
 /****************Date:13/09/2023.****************/
 /************************************************/
-#ifndef _USART_CONFIG_H_
-#define _USART_CONFIG_H_
+#ifndef MCAL_TIMER1_TIMER1_CONFIG_H_
+#define MCAL_TIMER1_TIMER1_CONFIG_H_
 
-#endif
+
+
+#endif /* MCAL_TIMER1_TIMER1_CONFIG_H_ */

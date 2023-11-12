@@ -1,11 +1,11 @@
-/*******************STD Types********************/
-/**********Author: Abdelrahman Mohamed.**********/
-/********************Ver.: 01********************/
+/*******************STD_TYPES********************/
+/********Authors: Amira Magdy,Abdelrahman********/
+/******************Ver.: 0.0.1.******************/
 /****************Date:14/08/2023.****************/
 /************************************************/
 
-#ifndef _STD_TYPES_H
-#define _STD_TYPES_H
+#ifndef _STD_TYPES_H_
+#define _STD_TYPES_H_
 
 typedef unsigned char u8;
 typedef unsigned short int u16;

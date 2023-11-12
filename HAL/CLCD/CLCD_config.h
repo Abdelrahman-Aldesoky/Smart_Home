@@ -1,6 +1,6 @@
 /*******************LCD Config*******************/
-/**********Author: Abdelrahman Mohamed.**********/
-/********************Ver.: 01********************/
+/********Authors: Amira Magdy,Abdelrahman********/
+/******************Ver.: 0.0.1.******************/
 /****************Date:21/08/2023.****************/
 /************************************************/
 
@@ -41,7 +41,7 @@
  * 3-0b00111000 two line display with 5x7 dot character font
  * 4-0b00111100 two line display with 5x10 dot character font
  */
-#define FUNCTION_SET 0b00111000
+#define FUNCTION_SET 0b00111100
 
 /*
  * DISPLAY_ON/OFF OPTIONS:
