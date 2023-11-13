@@ -509,7 +509,8 @@ void Display(u8 Copy_u8Selector, u16 Copy_u16Time, u8 Copy_u8TriesCount)
 		CLCD_voidSendString("Enter User name:");
 		break;
 	case MAX_USERS_REACHED:
-		CLCD_voidSendString("20 users max!!");
+		CLCD_voidSendNumber(MAX_USERS);
+		CLCD_voidSendString(" users max!!");
 		break;
 	case USER_EXISTS:
 		CLCD_voidSendString("User Exists!!");
@@ -567,7 +568,6 @@ void Display(u8 Copy_u8Selector, u16 Copy_u16Time, u8 Copy_u8TriesCount)
 			CLCD_voidSendNumber(NUMBER_OF_TRIES_DISPLAY - Copy_u8TriesCount);
 			CLCD_voidSendString(".");
 		}
-		break;
 		break;
 	case USER_DOESNOT_EXIST:
 		CLCD_voidSendString(" USER DOES NOT! ");
