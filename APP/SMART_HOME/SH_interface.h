@@ -27,5 +27,4 @@ void Alarm(void);
 u16 Combine2u8(u8 arr[]);
 void Splitu16(u16 number, u8 arr[]);
 
-
 #endif

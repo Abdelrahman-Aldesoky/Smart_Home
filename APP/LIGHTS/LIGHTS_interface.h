@@ -10,5 +10,4 @@
 void Light_voidInit(void);
 void LightToggle(void);
 
-
 #endif /* APP_LIGHTS_LIGHTS_INTERFACE_H_ */

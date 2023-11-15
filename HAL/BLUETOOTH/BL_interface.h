@@ -16,6 +16,6 @@
 
 #define _USERNAME 1
 
-void BL_voidReceive(u8 Selector, u8 arr[], u8* arr_length);
+void BL_voidReceive(u8 Selector, u8 arr[], u8 *arr_length);
 
 #endif /* HAL_BLUETOOTH_BL_INTERFACE_H_ */

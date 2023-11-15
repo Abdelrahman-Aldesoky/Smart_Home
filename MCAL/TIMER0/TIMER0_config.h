@@ -16,7 +16,7 @@
  * 3-PWM_PHASE_CORRECT
  * 4-FAST_PWM
  * */
-#define TIMER0_MODE 			CTC_MODE
+#define TIMER0_MODE CTC_MODE
 
 /*PreScaler options:
  * 1-DIV_BY_1
@@ -24,7 +24,7 @@
  * 3-DIV_BY_64
  * 4-DIV_BY_256
  * 5-DIV_BY_1024*/
-#define PRE_SCALER 				DIV_BY_256
+#define PRE_SCALER DIV_BY_256
 
 /********************************End of Timer mode and PreScaler Configuration*********************************/
 /**************************************************************************************************************/
@@ -35,20 +35,18 @@
 
 /*Settings here for 1 milli second Interval*/
 /*OCR0 u can choose any value from 0 to 255*/
-#define OCR0_COMPARE_VALUE 		250
+#define OCR0_COMPARE_VALUE 250
 /*Number of times the CTC does interrupts until desired time is reached*/
-#define CTC_COUNT				125
+#define CTC_COUNT 125
 
 /****************************************End of CTC Mode configuration*****************************************/
 /**************************************************************************************************************/
 /**************************************************************************************************************/
 /*------------------------------------------------------------------------------------------------------------*/
 
-
-
 /*options:FAST_PWM
  * 1-S_TOP_C_CMP
  * 2-C_TOP_S_CMP*/
-#define FAST_PWM_MODE	S_TOP_C_CMP
+#define FAST_PWM_MODE S_TOP_C_CMP
 
 #endif

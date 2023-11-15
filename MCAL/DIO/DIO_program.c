@@ -10,7 +10,6 @@
 #include "DIO_config.h"
 #include "DIO_interface.h"
 
-
 void DIO_voidSetPortDirection(u8 Copy_u8Port, u8 Copy_u8Direction)
 {
 	switch (Copy_u8Port)

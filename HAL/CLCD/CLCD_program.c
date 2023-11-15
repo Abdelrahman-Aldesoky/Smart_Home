@@ -12,7 +12,6 @@
 #include "CLCD_interface.h"
 #include <util/delay.h>
 
-
 void CLCD_voidInit(void) // LCD Initialize function
 {
 	/*******************Start of port and pins Initialization*******************/

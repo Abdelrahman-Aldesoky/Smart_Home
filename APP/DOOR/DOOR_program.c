@@ -14,7 +14,7 @@
 
 void Door_Init(void)
 {
-	DIO_voidSetPinDirection(DOOR_PORT,DOOR_PIN,PIN_DIRECTION_OUTPUT); //OCR1A
+	DIO_voidSetPinDirection(DOOR_PORT, DOOR_PIN, PIN_DIRECTION_OUTPUT); // OCR1A
 	TIMER1_voidSetICRVal(ICR_VALUE);
 	TIMER1_voidInit();
 }
@@ -28,4 +28,3 @@ void Door_Unlock(void)
 {
 	TIMER1_voidSetOCRVal(END_POINT);
 }
-

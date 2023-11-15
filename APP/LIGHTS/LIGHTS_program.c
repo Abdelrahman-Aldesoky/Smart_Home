@@ -12,12 +12,12 @@
 
 void Light_voidInit(void)
 {
-	DIO_voidSetPinDirection(LIGHT_PORT,LIGHT_PIN,PIN_DIRECTION_OUTPUT);
+	DIO_voidSetPinDirection(LIGHT_PORT, LIGHT_PIN, PIN_DIRECTION_OUTPUT);
 }
 
 void LightToggle(void)
 {
-	if(DIO_u8GetPinValue(LIGHT_PORT, LIGHT_PIN))
+	if (DIO_u8GetPinValue(LIGHT_PORT, LIGHT_PIN))
 	{
 		DIO_voidSetPinValue(LIGHT_PORT, LIGHT_PIN, PIN_VALUE_LOW);
 	}

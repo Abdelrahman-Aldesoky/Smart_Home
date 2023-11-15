@@ -11,5 +11,4 @@ void TIMER1_voidInit(void);
 void TIMER1_voidSetICRVal(u16 Copy_u16Val);
 void TIMER1_voidSetOCRVal(u16 Copy_u16Val);
 
-
 #endif
